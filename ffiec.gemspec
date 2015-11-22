@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrew Curley"]
   spec.email         = ["andrew.curley@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Ruby wrapper around the FFIEC's Public Data Distribution (PDD) Public Web Service (PWS)"
+  spec.description   = "The FFIEC (Federal Financial Institutions Examination Council) provides a SOAP web service for it's Public Data Distribution (PDD) Public Web Service (PWS).  Through this API you can obtain financial and structural information for most FDIC-insured institutions. The information available on this site is updated to reflect the most recent data for both prior and current periods. "
+  spec.homepage      = "http://github.com/acurley/ffiec"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
