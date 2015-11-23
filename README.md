@@ -23,6 +23,8 @@ Or install it yourself as:
 
 ## Usage
 ```
+require 'ffiec'
+
 client = Ffiec::Client.new(username:'your_username', api_key:'your_api_key')
 
 client.available_commands
