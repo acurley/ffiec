@@ -20,7 +20,12 @@ module Ffiec
       return response.body[:retrieve_reporting_periods_response][:retrieve_reporting_periods_result][:string]
     end
 
-    def retrieve_panel_of_reporters
+    # Return an array of hashes containing basic metadata for institutions that filed reports on a given reporting date.
+    # 
+    # Note: Many of the values returned within the hashes do not have proper spacing. It is recommended to use .strip and .squeeze to normalize values
+    def retrieve_panel_of_reporters(date:)
+      response = @client.call(:retrieve_panel_of_reporters, message: {reportingPeriodEndDate: date})
+      return response.body[:retrieve_panel_of_reporters_response][:retrieve_panel_of_reporters_result][:reporting_financial_institution]
     end
 
     def retrieve_filers_submission_date_time
