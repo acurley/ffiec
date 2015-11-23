@@ -1,9 +1,11 @@
-# Ffiec
+# FFIEC Public Data Distribution Web Service
 
 This gem is a Ruby wrapper for the FFIEC (Federal Financial Institutions Examination Council) Public Data Distribution (PDD) Public Web Service (PWS). Before using this gem you must sign up for a web services account at the [FFIEC's website](https://cdr.ffiec.gov/public/PWS/CreateAccount.aspx) where you will choose a username and be provided with an API key.
 
 * [Documentation for the SOAP API](https://cdr.ffiec.gov/Public/PWS/WebServices/RetrievalService.asmx)
 * [WSDL file](https://cdr.ffiec.gov/Public/PWS/WebServices/RetrievalService.asmx?WSDL)
+
+Note: Currently, the PWS will allow a limited number of downloads (approximately 2500 per hour). If the download limit has been reached within one hour, the user will have to wait until the next hour to continue with the next download.
 
 ## Installation
 
@@ -35,6 +37,9 @@ client.test_user_access
 
 client.retrieve_facsimile(date: '9/30/2015', format: 'SDF', id: 37, id_type: 'ID_RSSD')
 => "Call Date;Bank RSSD Identifier;MDRM #;Value;Last Update;Short Definition;Call Schedule;Line Number\r\n20150930;37;RCOA3792;20326;20151028;Total capital (sum of items 26 and 34.a)..."
+
+client.retrieve_panel_of_reporters(date: '9/30/2015')
+=> {:id_rssd=>"496434", :fdic_cert_number=>"2794", :occ_chart_number=>"9681", :ots_dock_number=>"14685" ...}
 ```
 
 ## Development
