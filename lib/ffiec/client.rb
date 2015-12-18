@@ -28,9 +28,20 @@ module Ffiec
       return response.body[:retrieve_panel_of_reporters_response][:retrieve_panel_of_reporters_result][:reporting_financial_institution]
     end
 
-    def retrieve_filers_submission_date_time
+    # CDR Definition: Retrieves the ID RSSDs and DateTime of the reporters who have filed after a given date 
+    # for a given reporting period.
+    # 
+    # Returns an array of hashes (keys are :id_rssd and :date_time) that contain the institutions that submitted or updated
+    # filings for a specific reporting period (:reporting_period_end_date) after a given date (:last_update_datetime).\
+    #
+    # :reporting_period_end_date - See output of :retrieve_reporting_periods method for acceptable values
+    # :date_time - A string representing a date (e.g. 01-02-2015, 01/02/2015, 2015-01-02, etc...)
+    def retrieve_filers_submission_date_time(reporting_period_end_date:, last_update_datetime:)
+      response = @client.call(:retrieve_filers_submission_date_time, message: {reportingPeriodEndDate: reporting_period_end_date, lastUpdateDateTime: last_update_datetime})
+      return response.body[:retrieve_filers_submission_date_time_response][:retrieve_filers_submission_date_time_result][:retrieve_filers_date_time]
     end
 
+    # Retrieves the ID RSSDs of the reporters who have filed after a given date for a given reporting period.
     def retrieve_filers_since_date
     end
 
